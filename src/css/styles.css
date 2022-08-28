@@ -1,5 +1,8 @@
 :root{
     --primaryFont: 'Source Sans Pro', sans-serif;
+    --strongBlack: #07090D;
+    --white: #FFF;
+    --oragne: #FE7A15;
 }
 
 *{
@@ -15,5 +18,74 @@ html{
 
 body{
     font-size: 1.6rem;
+    margin: 10px;
+    margin-top: 15px;
 }
 
+/* Global */
+a{
+
+}
+
+li{
+    list-style: none;
+}
+
+/* Header */
+header{
+    width: 100%;
+}
+
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation__list{
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.shopping-cart{
+    position: relative;
+    margin-right: 10px;
+}
+
+.shopping-cart__num-items{
+    position: absolute;
+    background-color: var(--oragne);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    color: var(--white);
+    display: grid;
+    place-content: center;
+    font-size: 1.4rem;
+    padding-top: 1px;
+    top: -3px;
+    right: -3px;
+}
+
+.icon-menu,
+.icon-shopping-cart{
+    width: 33px;
+    height: fit-content;
+}
+
+.icon-location{
+    width: 23px;
+    height: fit-content;
+    padding-right: 5px;
+}
+
+.user-location{
+    background-color: var(--oragne);
+    border-radius: 20px;
+    color: white;
+    padding: 5px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -8,12 +8,47 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Buscador de recetas BEDU</h1>
+    <!-- <h1>Buscador de recetas BEDU</h1>
 
     <div class="container py-4 px-3 mx-auto">
         <h1>Hello, Bootstrap and Webpack!</h1>
         <button class="btn btn-primary">Primary button</button>
-      </div>
+      </div> -->
+
+    <header>
+        <nav class="nav">
+            <ul class="navigation">
+                <li class="navigation__list">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-menu" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#07090D" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <line x1="4" y1="6" x2="20" y2="6" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <line x1="4" y1="18" x2="20" y2="18" />
+                    </svg>
+                </li>
+                <li class="navigation__list">
+                    <div class="user-location">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-location" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="12" cy="11" r="3" />
+                            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                          </svg>
+                        <span>México</span>
+                    </div>
+                </li>
+                <li class="navigation__list shopping-cart">
+                    <span class="shopping-cart__num-items">3</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-shopping-cart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#07090D" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <circle cx="6" cy="19" r="2" />
+                        <circle cx="17" cy="19" r="2" />
+                        <path d="M17 17h-11v-14h-2" />
+                        <path d="M6 5l14 1l-1 7h-13" />
+                    </svg>
+                </li>
+            </ul>
+        </nav>
+    </header>
       
     <script src="./js/index.js"></script>
 </body>
