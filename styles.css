@@ -3,18 +3,20 @@
 }
 
 body {
-    background-color: #FFCC33;
+    background-color: #fff8e0;
     color: #fff;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+    font-family:Georgia, 'Times New Roman', Times, serif ;
     margin: 0;
 }
 
 .fixed-header {
+    /* position: fixed; */
     position: relative;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #33daff;
+    background-color: #fe585f;
 }
 
 .container {
@@ -35,6 +37,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    color: #462415;
 }
 
 .flex {
@@ -47,10 +50,12 @@ button {
     border-bottom-left-radius: 20px;
     font-size: 14px;
     padding: 8px 10px;
+    background-color: #fff;
+    border: 1px #fce2d8 solid;
 }
 
 input[type="text"] {
-    width: 300px;
+    width: 350px;
 }
 
 .search-btn {
@@ -59,20 +64,30 @@ input[type="text"] {
     border-radius: 0;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    background-color: #fff;
+    border: 1px #fce2d8 solid;
+    color: #fe585f;
 }
 
 .random-btn {
     cursor: pointer;
     border-radius: 20px;
     width: auto;
+    background-color: #fff;
+    border: 1px #fce2d8 solid;
+    color: #fe585f;
 }
 
 input:hover {
     font-weight: bold;
+    color: #fe585f;
+    border: 2px #fce2d8 solid;
 }
 
 button:hover {
-    background-color: #c4cee2;
+    background-color: rgba(252, 226, 216, 1);
+    border: 2x #fce2d8 solid;
+    
 }
 
 .meals {
@@ -95,7 +110,7 @@ button:hover {
 .meal img {
     width: 100%;
     height: 100%;
-    border: 4px #fff solid;
+    border: 4px #fcecd8 solid;
     border-radius: 5px;
     box-shadow: 0 0 15px #a9a5a5;
    
@@ -107,7 +122,7 @@ button:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(252, 226, 216, 0.851);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,25 +144,26 @@ button:hover {
 .single-meal img {
     width: 300px;
     margin: 15px;
-    border: 4px #fff solid;
+    border: 4px #fcecd8 solid;
     border-radius: 10px;
-    box-shadow: 0 0 15px #a9a5a5;
-
+    box-shadow: 0 0 20px #a9a5a5;
+   
 }
 
 .single-meal-info {
     margin: 20px;
     padding: 10px;
-    border: 2px #0b8311 dashed;
+    border: 2px #fe585f dashed;
     border-radius: 5px;
     font-weight: bold;
+    
 }
 
 .single-meal p {
     margin: 0;
     letter-spacing: 0.5px;
     line-height: 1.5;
-
+    
 }
 
 .single-meal ol {
@@ -158,7 +174,7 @@ button:hover {
 .single-meal ol li {
     border: 1px #ededed solid;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #fcecd8;
     display: inline-block;
     color: #2d2013;
     font-size: 12px;
