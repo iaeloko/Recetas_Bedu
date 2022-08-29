@@ -3,6 +3,9 @@
     --strongBlack: #07090D;
     --white: #FFF;
     --oragne: #FE7A15;
+    --strongGrey: #363637;
+    --softBlue: #F4F5F8;
+    --placeHolderColor: #707071;
 }
 
 *{
@@ -88,4 +91,98 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Main */
+
+
+/* Section - Search */
+.search-content{
+    margin-top: 37px;
+    width: 100%;
+}
+
+h1{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.4rem;
+    width: 240px;
+    margin: 0 auto;
+    color: var(--oragne);
+    font-weight: bold;
+}
+
+#search div{
+    margin-top: 20px;
+    position: relative;
+}
+
+.icon-search,
+#btnSearchSettings{
+    position: absolute;
+}
+
+.icon-search{
+    left: 15px;
+}
+
+.icon-search{
+    top: calc(50% - 19px);
+}
+
+#btnSearchSettings{
+    top: calc(50% - 23px);
+}
+
+.icon-search,
+.icon-search-settings{
+    width: 25px;
+    height: fit-content;
+}
+
+.icon-search-settings{
+    display: grid;
+    place-self: center;
+    margin: 5px;
+}
+
+#btnSearchSettings{
+    right: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+#search #txtReceta{
+    width: 100%;
+    height: 50px;
+    padding-left: 55px;
+    font-size: 1.6rem;
+    outline: none;
+    background-color: var(--softBlue);
+    border: none;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+:-ms-input-placeholder { color: var(--placeHolderColor) } /* IE 10+ */
+::-webkit-input-placeholder { color: var(--placeHolderColor) } /* WebKit */
+::-moz-placeholder { color: var(--placeHolderColor) } /* Firefox 19+ */
+
+#btnBuscarReceta{
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: var(--oragne);
+    color: var(--white);
+    font-weight: bold;
+}
+
+#btnBuscarReceta:hover{
+    background-color: #fca664;
 }
