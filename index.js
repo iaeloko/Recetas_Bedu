@@ -3,7 +3,10 @@ const btnSearchRecipe = document.getElementById('btnSearchRecipe'),
       txtRecipe = document.getElementById('txtRecipe'),
       form = document.getElementById('search'),
       dishes = document.querySelector('.dishes'),
-      dishesContent = document.querySelector('.dishes-content');
+      dishesContent = document.querySelector('.dishes-content'),
+      dishSelectedContent = document.querySelector('.dish-selected-content'),
+      btnCloseselectedDisd = document.querySelector('#btnCloseDishSelected'),
+      body = document.querySelector('body');
     //   submit = document.getElementById('submit'),
     //   random = document.getElementById('random'),
     //   mealsElement = document.getElementById('meals'),
@@ -21,6 +24,7 @@ function init(){
 function evenListeners(){
     // Buscar y mostrar comidas desde la API
     btnSearchRecipe.addEventListener('click', searchMeal);
+    btnCloseselectedDisd.addEventListener('click', () => showDish(null, false))
 }
 
 // //Event Listener obtener comida random
@@ -99,7 +103,27 @@ function hoverFunctionInCards(){
     dishses.forEach( dishCard=> {
         dishCard.addEventListener('mouseenter', () => hoverSelected(dishCard, true));
         dishCard.addEventListener('mouseleave', () => hoverSelected(dishCard, false));
+        dishCard.addEventListener('click', () => showDish(dishCard, true));
     })
+}
+
+
+let scrrollOntop;
+let doc = document.documentElement;
+
+function showDish(dishCard, value){
+    if(value){
+        scrrollOntop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+        dishSelectedContent.classList.remove('no-display');
+        body.classList.add('no-show-scroll');
+        dishSelectedContent.style.top = `${scrrollOntop}px`;
+    } else{
+        dishSelectedContent.classList.add('no-display');
+        body.classList.remove('no-show-scroll');
+        dishSelectedContent.style.top = `0px`;
+    }
+    
+    doc.scrollTop = scrrollOntop;
 }
 
 function hoverSelected(dishCard, value){
