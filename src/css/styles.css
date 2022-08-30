@@ -336,3 +336,115 @@ h1{
       transform: scale(1.0); 
     } 
 }
+
+
+/* Dish Selected */
+.dish-selected-content{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-content: center;
+}
+
+.dish-selected-background{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.775);
+}
+
+.dish-selected{
+    position: relative;
+    z-index: 2;
+    background-color: var(--white);
+    height: 670px;
+    width: 430px;
+    border-radius: 10px;
+    display: grid;
+    place-content: center;
+}
+
+.icon-close{
+    transform: rotate(45deg);
+}
+
+.button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#btnCloseDishSelected{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.dish-selected-img{
+    width: 250px;
+    border-radius: 8px;
+}
+
+.dish-selected-data{
+    padding: 0 20px;
+    display: grid;
+    grid-template-rows: 60px 250px repeat(3, auto);
+    place-items: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.dish-selected-area-category{
+    margin: 15px 0;
+}
+
+.dish-selected-flex{
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.indredients-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+
+.dish-selected-instructions{
+    margin-top: 15px;
+}
+
+.dish-selected-instructions h3{
+    margin-bottom: 10px;
+}
+
+.dish-selected-instructions p{
+    font-size: 1.4rem;
+    text-align: justify;
+}
+
+.dish-selected-ingredients{
+    margin-top: 35px;
+}
+
+.dish-selected-ingredients h3,
+.dish-selected-instructions h3{
+    text-align: center;
+}
+
+.indredients-list-item{
+    width: fit-content;
+    padding: 10px 10px;
+    background-color: var(--oragne);
+    border-radius: 10px;
+    color: var(--white);
+}

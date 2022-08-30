@@ -17,14 +17,11 @@ function init(){
     evenListeners();
 }
 
-// Eventos
-
+// Event Listeners
 function evenListeners(){
     // Buscar y mostrar comidas desde la API
     btnSearchRecipe.addEventListener('click', searchMeal);
 }
-
-// //Event Listeners
 
 // //Event Listener obtener comida random
 // random.addEventListener('click', getRandomMeal);
@@ -55,15 +52,10 @@ function searchMeal(event) {
 
     if(!recipeName.length) { showAlert('No has introducido ningun nombre de receta a buscar.', 'error'); return; }
 
-    //limpiar singleMeal
-    //singleMealElement.innerHTML = '';
-
     //comprobar si está vacío
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeName}`)
         .then(response => response.json())
         .then(data => showMeal(data));
-    //Borrar texto de búsqueda
-    //search.value = '';
 }
 
 function showMeal(data){
@@ -84,7 +76,7 @@ function showMeal(data){
         showSpinner(false);
 
         const dishSearched = document.createElement('h2');
-        dishSearched.textContent = `Resultados de busqueda de: '${txtRecipe.value}':`;
+        dishSearched.textContent = `Resultados de busqueda de: '${txtRecipe.value}'`;
         dishesContent.insertBefore(dishSearched, dishes);
         dishSearched.classList.add('searchResultH2');
 
@@ -95,17 +87,6 @@ function showMeal(data){
             const mealDataCard = {idMeal, strMeal, strMealThumb, strArea, strCategory};
             buildMealCards(mealDataCard);
         })
-
-        // btnResetForm.classList.remove('cursor-not-allowed', 'opacity-50');
-
-        // fields.forEach( field => {
-        //     field.removeAttribute('disabled');
-        // });
-
-        // setTimeout(() => {
-        //     confirmationMessage.remove(); // Delete confirmation message
-        // }, 5000);
-
     }, 1000);
 }
 
@@ -122,12 +103,12 @@ function hoverFunctionInCards(){
 }
 
 function hoverSelected(dishCard, value){
-    const dishCardElemnts = dishCard.children;
-    const dishImg = dishCardElemnts[1];
-    const dishDataElements = dishCardElemnts[0].children;
-    const dishName = dishDataElements[0].children[0];
-    const dishCategory = dishDataElements[1].children[1];
-    const dishArea = dishDataElements[2].children[1];
+    const dishCardElemnts = dishCard.children,
+          dishImg = dishCardElemnts[1],
+          dishDataElements = dishCardElemnts[0].children,
+          dishName = dishDataElements[0].children[0],
+          dishCategory = dishDataElements[1].children[1],
+          dishArea = dishDataElements[2].children[1];
 
     if(value){
         dishName.style.color = "white";
@@ -198,7 +179,7 @@ function showAlert(message, type){
     // Mensaje de error
     divMensaje.textContent = message;
 
-    // Insertar ern el HTML
+    // Insertar el HTML
     alerts = document.querySelectorAll('.alert');
     if(alerts.length === 0) form.insertBefore(divMensaje, btnSearchRecipe.nextSibling);
 
