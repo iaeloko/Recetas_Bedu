@@ -2,7 +2,8 @@
 const btnSearchRecipe = document.getElementById('btnSearchRecipe'),
       txtRecipe = document.getElementById('txtRecipe'),
       form = document.getElementById('search'),
-      dishesContent = document.querySelector('.dishes');
+      dishes = document.querySelector('.dishes'),
+      dishesContent = document.querySelector('.dishes-content');
     //   submit = document.getElementById('submit'),
     //   random = document.getElementById('random'),
     //   mealsElement = document.getElementById('meals'),
@@ -66,7 +67,7 @@ function searchMeal(event) {
 }
 
 function showMeal(data){
-
+    cleanHTML();
     const {meals} = data;
     
     showSpinner(true);
@@ -84,19 +85,16 @@ function showMeal(data){
 
         const dishSearched = document.createElement('h2');
         dishSearched.textContent = `Resultados de busqueda de: '${txtRecipe.value}':`;
-        document.querySelector('.dishes-content').insertBefore(dishSearched, dishesContent);
+        dishesContent.insertBefore(dishSearched, dishes);
+        dishSearched.classList.add('searchResultH2');
 
         form.reset();
 
         meals.forEach( meal => {
-            const {idMeal, strMealThumb, strArea, strCategory} = meal;
-            const mealDataCard = {idMeal, strMealThumb, strArea, strCategory};
+            const {idMeal, strMeal, strMealThumb, strArea, strCategory} = meal;
+            const mealDataCard = {idMeal, strMeal, strMealThumb, strArea, strCategory};
             buildMealCards(mealDataCard);
         })
-
-        
-
-        
 
         // btnResetForm.classList.remove('cursor-not-allowed', 'opacity-50');
 
@@ -115,14 +113,15 @@ function showMeal(data){
 function hoverFunctionInCards(){
     const dishses = document.querySelectorAll('.dish');
 
-    // if(!dishses) return;
+    if(!dishses) return;
+
     dishses.forEach( dishCard=> {
-        dishCard.addEventListener('mouseenter', () => hover(dishCard));
-        dishCard.addEventListener('mouseleave', () => hoverExit(dishCard));
+        dishCard.addEventListener('mouseenter', () => hoverSelected(dishCard, true));
+        dishCard.addEventListener('mouseleave', () => hoverSelected(dishCard, false));
     })
 }
 
-function hover(dishCard){
+function hoverSelected(dishCard, value){
     const dishCardElemnts = dishCard.children;
     const dishImg = dishCardElemnts[1];
     const dishDataElements = dishCardElemnts[0].children;
@@ -130,28 +129,23 @@ function hover(dishCard){
     const dishCategory = dishDataElements[1].children[1];
     const dishArea = dishDataElements[2].children[1];
 
-    dishName.style.color = "white";
-    dishCategory.style.color = "white";
-    dishArea.style.color = "white";
-    dishImg.style.transform = "rotate(4deg)";
-}
+    if(value){
+        dishName.style.color = "white";
+        dishCategory.style.color = "white";
+        dishArea.style.color = "white";
+        dishImg.style.transform = "rotate(4deg)";
+    } else{
+        dishName.style.color = "black";
+        dishCategory.style.color = "black";
+        dishArea.style.color = "black";
+        dishImg.style.transform = "";
+    }
 
-function hoverExit(dishCard){
-    const dishCardElemnts = dishCard.children;
-    const dishImg = dishCardElemnts[1];
-    const dishDataElements = dishCardElemnts[0].children;
-    const dishName = dishDataElements[0].children[0];
-    const dishCategory = dishDataElements[1].children[1];
-    const dishArea = dishDataElements[2].children[1];
-
-    dishName.style.color = "black";
-    dishCategory.style.color = "black";
-    dishArea.style.color = "black";
-    dishImg.style.transform = "";
 }
 
 function buildMealCards(mealData){
-    const {idMeal, strMealThumb, strArea, strCategory} = mealData;
+    
+    const {idMeal, strMeal, strMealThumb, strArea, strCategory} = mealData;
     const dish = document.createElement('div');
     const dishData = document.createElement('ul');
     const dishImg = document.createElement('img');
@@ -163,7 +157,7 @@ function buildMealCards(mealData){
     dishImg.src = strMealThumb;
 
     dishData.innerHTML = `<li>
-                                <p class="dish__data__name">Double Spicy Pizasdsadza</p>
+                                <p class="dish__data__name">${strMeal}</p>
                             </li>
                             <li class="dish__data__list">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-kitchen" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -183,7 +177,7 @@ function buildMealCards(mealData){
     
     dish.appendChild(dishData);
     dish.appendChild(dishImg);
-    dishesContent.appendChild(dish);
+    dishes.appendChild(dish);
 
     hoverFunctionInCards();
 }
@@ -215,7 +209,15 @@ function showAlert(message, type){
 }
 
 
+function cleanHTML(){
+    document.querySelectorAll('.searchResultH2').forEach( searchResultH2 => {
+        searchResultH2.remove();
+    });
 
+    while(dishes.firstChild){
+        dishes.removeChild(dishes.firstChild);
+    }
+}
 
 
 // //Función Obtener comida por ID desde la api

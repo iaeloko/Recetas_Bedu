@@ -223,6 +223,7 @@ h1{
 .dish{
     display: grid;
     grid-template-columns: 1fr 160px;
+    gap: 20px;
     place-items: center;
     border: 2px solid rgba(203, 203, 203, 0.341);
     margin: 0 5px 30px 5px;
@@ -231,6 +232,7 @@ h1{
     cursor: pointer;
     -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.29); 
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.29);
+    height: fit-content;
 }
 
 .dish:hover{
@@ -243,7 +245,7 @@ h1{
     grid-template-rows: auto auto auto;
     align-items: center;
     gap: 10px;
-    height: 160px;
+    height: fit-content;
     padding: 20px 0;
 }
 
@@ -256,6 +258,7 @@ h1{
     color: #505050;
     font-size: 2rem;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .dish__data__list{
