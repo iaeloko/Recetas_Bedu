@@ -96,7 +96,8 @@ header{
 /* Section - Search */
 .search-content{
     margin-top: 37px;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
 }
 
 h1{
