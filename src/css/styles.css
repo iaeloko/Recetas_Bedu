@@ -115,7 +115,7 @@ h1{
 }
 
 .icon-search,
-#btnSearchSettings{
+#btnSearchRandom{
     position: absolute;
 }
 
@@ -127,23 +127,23 @@ h1{
     top: calc(50% - 19px);
 }
 
-#btnSearchSettings{
+#btnSearchRandom{
     top: calc(50% - 23px);
 }
 
 .icon-search,
-.icon-search-settings{
+.icon-random{
     width: 25px;
     height: fit-content;
 }
 
-.icon-search-settings{
+.icon-random{
     display: grid;
     place-self: center;
     margin: 5px;
 }
 
-#btnSearchSettings{
+#btnSearchRandom{
     right: 10px;
     border-radius: 8px;
     border: none;
