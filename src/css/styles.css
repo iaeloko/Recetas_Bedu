@@ -96,6 +96,8 @@ header{
 /* Section - Search */
 .search-content{
     margin-top: 37px;
+    width: 40%;
+    margin: 10px auto;
 }
 
 h1{
@@ -502,4 +504,14 @@ footer::-webkit-scrollbar-thumb{
 
 footer:hover::-webkit-scrollbar-thumb {
     background: black; 
+}
+
+/** dispositivos moviles en vista viewport (vertical) */
+@media (max-width: 575px) {
+
+    /* Section - Search */
+    .search-content{
+        margin-top: 37px;
+        width: 100%;
+    }
 }
