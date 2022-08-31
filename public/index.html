@@ -5,26 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Meal Finder</title>
+    <link rel="stylesheet" href="./styles.css">
+    <title>One click meals</title>
+
 </head>
 
 <body>
-
-    <div class="container">
-        <h1>Meal Finder</h1>
-        <div class="flex">
-            <form class="flex" id="submit">
-                <input type="text" id="search" placeholder="Search for meals or keywords" />
-                <button class="search-btn" type="submit">
-                    <i class="fas fa-search"></i>
+    <section class="fixed-header">
+        <div class="container">
+            <h1>One click meals</h1>
+            <div class="flex">
+                <form class="flex" id="submit">
+                    <input type="text" id="search" placeholder="Search for meals or keywords" />
+                    <button class="search-btn" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div>
+                <button class="random-btn" id="random">
+                    <i class="fas fa-random"></i>
                 </button>
-            </form>
-            <button class="random-btn" id="random">
-                <i class="fas fa-random"></i>
-            </button>
+            </div>
         </div>
-
+    </section>
+    <div class="results">
         <div id="result-heading"></div>
         <div id="meals" class="meals"></div>
         <div id="single-meal"></div>
@@ -32,7 +37,7 @@
 
 
     <script src="https://kit.fontawesome.com/31ac679c64.js" crossorigin="anonymous"></script>
-    <script src="./index.js"></script>
+    <script src="/src/js/delete.js"></script>
 </body>
 
 </html>
