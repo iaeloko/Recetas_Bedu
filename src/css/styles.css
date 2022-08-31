@@ -378,10 +378,16 @@ h1{
 
 #btnCloseDishSelected{
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 10px;
     height: fit-content;
     width: fit-content;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: grid;
+    box-shadow: 7px 6px 29px -12px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 7px 6px 29px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 6px 29px -12px rgba(0,0,0,0.75);
 }
 
 .dish-selected-img{
@@ -392,14 +398,20 @@ h1{
 .dish-selected-data{
     padding: 0 20px;
     display: grid;
-    grid-template-rows: 60px 250px repeat(3, auto);
+    grid-template-rows: auto 250px repeat(3, auto);
     place-items: center;
     align-items: center;
     overflow-y: scroll;
 }
 
+.dish-selected-data h2{
+    margin: 20px 0;
+    text-align: center;
+    color: rgb(24, 24, 126);
+}
+
 .dish-selected-area-category{
-    margin: 15px 0;
+    margin: 10px 0 15px 0;
 }
 
 .dish-selected-flex{
@@ -409,23 +421,28 @@ h1{
 }
 
 .indredients-list{
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin: 10px 0;
+    /* display: grid;
+    place-items: center; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.dish-selected-instructions{
-    margin-top: 15px;
-}
 
-.dish-selected-instructions h3{
-    margin-bottom: 10px;
+.dish-selected-instructions h3,
+.dish-selected-ingredients h3{
+    margin-bottom: 15px;
+    color: rgb(24, 24, 126);
 }
 
 .dish-selected-instructions p{
     font-size: 1.4rem;
     text-align: justify;
+    line-height: 23px;
 }
 
 .dish-selected-ingredients{
@@ -444,6 +461,8 @@ h1{
     background-color: var(--oragne);
     border-radius: 10px;
     color: var(--white);
+    height: fit-content;
+    text-align: center;
 }
 
 .no-display{
