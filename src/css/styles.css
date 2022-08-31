@@ -216,6 +216,9 @@ h1{
 .dishes{
     margin-top: 20px;
     width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow:row wrap;
 }
 
 .dish{
