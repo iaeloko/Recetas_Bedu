@@ -2,25 +2,25 @@ import '../css/styles.css';
 
 // Variables y Selectores
 const btnSearchRecipe = document.getElementById('btnSearchRecipe'),
-      btnSearchRandomRecipe = document.getElementById('btnSearchRandom'),
-      txtRecipe = document.getElementById('txtRecipe'),
-      form = document.getElementById('search'),
-      dishes = document.querySelector('.dishes'),
-      dishesContent = document.querySelector('.dishes-content'),
-      dishSelectedContent = document.querySelector('.dish-selected-content'),
-      dishSelected = document.querySelector('.dish-selected'),
-      btnCloseselectedDisd = document.querySelector('#btnCloseDishSelected'),
-      body = document.querySelector('body');
+    btnSearchRandomRecipe = document.getElementById('btnSearchRandom'),
+    txtRecipe = document.getElementById('txtRecipe'),
+    form = document.getElementById('search'),
+    dishes = document.querySelector('.dishes'),
+    dishesContent = document.querySelector('.dishes-content'),
+    dishSelectedContent = document.querySelector('.dish-selected-content'),
+    dishSelected = document.querySelector('.dish-selected'),
+    btnCloseselectedDisd = document.querySelector('#btnCloseDishSelected'),
+    body = document.querySelector('body');
 
 
 init();
 
-function init(){
+function init() {
     evenListeners();
 }
 
 // Event Listeners
-function evenListeners(){
+function evenListeners() {
     btnSearchRecipe.addEventListener('click', searchMeal); // Buscar y mostrar comidas desde la API
     btnCloseselectedDisd.addEventListener('click', () => showDish(false))
     btnSearchRandomRecipe.addEventListener('click', getRandomMeal);
@@ -34,11 +34,12 @@ function searchMeal(event) {
 
     const recipeName = txtRecipe.value; //Obtener término de búsqueda
 
-    if(!recipeName.length) { showAlert('No has introducido ningun nombre de receta a buscar.', 'error'); return; }
+    if (!recipeName.length) { showAlert('No has introducido ningun nombre de receta a buscar.', 'error'); return; }
 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeName}`)
         .then(response => response.json())
-        .then(data => getMealData(data));
+        .then(data => getMealData(data))
+        .catch(error => console.log(error));
 }
 
 //Función Obtener comida por ID desde la api
@@ -48,7 +49,8 @@ function getMealByID(mealID) {
         .then(data => {
             const meal = data.meals[0];
             buildMealBigCard(meal);
-        });
+        })
+        .catch(error => console.log(error));
 }
 
 //Comida aleatoria
@@ -60,16 +62,17 @@ function getRandomMeal(event) {
         .then(response => response.json())
         .then(data => {
             getMealData(data, true);
-        });
+        })
+        .catch(error => console.log(error));
 }
 
 
-function getMealData(data, random = false){
-    const {meals} = data;
-    
+function getMealData(data, random = false) {
+    const { meals } = data;
+
     showSpinner(true);
-    if(!meals){
-        setTimeout( () => {
+    if (!meals) {
+        setTimeout(() => {
             showSpinner(false);
             showAlert('No hay resultados de busqueda.', 'error');
         }, 1000)
@@ -77,15 +80,15 @@ function getMealData(data, random = false){
     }
 
     // Show spinner
-    setTimeout( () => {
+    setTimeout(() => {
         showSpinner(false);
 
         const dishSearched = document.createElement('h2');
 
-        const dishSearchedText = 
-            (random) 
-                ?  `Resultados de busqueda aleatoria:` 
-                :`Resultados de busqueda de: '${txtRecipe.value}'`;
+        const dishSearchedText =
+            (random)
+                ? `Resultados de busqueda aleatoria:`
+                : `Resultados de busqueda de: '${txtRecipe.value}'`;
 
         dishSearched.textContent = dishSearchedText;
 
@@ -94,21 +97,21 @@ function getMealData(data, random = false){
 
         form.reset();
 
-        meals.forEach( meal => {
-            const {idMeal, strMeal, strMealThumb, strArea, strCategory} = meal;
-            const mealDataCard = {idMeal, strMeal, strMealThumb, strArea, strCategory};
+        meals.forEach(meal => {
+            const { idMeal, strMeal, strMealThumb, strArea, strCategory } = meal;
+            const mealDataCard = { idMeal, strMeal, strMealThumb, strArea, strCategory };
             buildMealCards(mealDataCard);
         })
     }, 1000);
 }
 
 
-function hoverFunctionInCards(){
+function hoverFunctionInCards() {
     const dishses = document.querySelectorAll('.dish');
 
-    if(!dishses) return;
+    if (!dishses) return;
 
-    dishses.forEach( dishCard=> {
+    dishses.forEach(dishCard => {
         dishCard.addEventListener('mouseenter', () => hoverSelected(dishCard, true));
         dishCard.addEventListener('mouseleave', () => hoverSelected(dishCard, false));
     })
@@ -118,36 +121,36 @@ function hoverFunctionInCards(){
 let scrrollOntop;
 let doc = document.documentElement;
 
-function showDish(value){
-    if(value){
-        scrrollOntop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+function showDish(value) {
+    if (value) {
+        scrrollOntop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
         dishSelectedContent.classList.remove('no-display');
         body.classList.add('no-show-scroll');
         dishSelectedContent.style.top = `${scrrollOntop}px`;
-    } else{
+    } else {
         dishSelectedContent.classList.add('no-display');
         body.classList.remove('no-show-scroll');
         dishSelectedContent.style.top = `0px`;
         cleanMealHTML();
     }
-    
+
     doc.scrollTop = scrrollOntop;
 }
 
-function hoverSelected(dishCard, value){
+function hoverSelected(dishCard, value) {
     const dishCardElemnts = dishCard.children,
-          dishImg = dishCardElemnts[1],
-          dishDataElements = dishCardElemnts[0].children,
-          dishName = dishDataElements[0].children[0],
-          dishCategory = dishDataElements[1].children[1],
-          dishArea = dishDataElements[2].children[1];
+        dishImg = dishCardElemnts[1],
+        dishDataElements = dishCardElemnts[0].children,
+        dishName = dishDataElements[0].children[0],
+        dishCategory = dishDataElements[1].children[1],
+        dishArea = dishDataElements[2].children[1];
 
-    if(value){
+    if (value) {
         dishName.style.color = "white";
         dishCategory.style.color = "white";
         dishArea.style.color = "white";
         dishImg.style.transform = "rotate(4deg)";
-    } else{
+    } else {
         dishName.style.color = "black";
         dishCategory.style.color = "black";
         dishArea.style.color = "black";
@@ -156,15 +159,15 @@ function hoverSelected(dishCard, value){
 
 }
 
-function buildMealCards(mealData){
-    const {idMeal, strMeal, strMealThumb, strArea, strCategory} = mealData;
+function buildMealCards(mealData) {
+    const { idMeal, strMeal, strMealThumb, strArea, strCategory } = mealData;
     const dish = document.createElement('div');
     const dishData = document.createElement('ul');
     const dishImg = document.createElement('img');
     dish.classList.add('dish');
     dishData.classList.add('dish__data')
     dishImg.classList.add('dish-img');
-    
+
     dish.setAttribute('id', idMeal);
     dishImg.src = strMealThumb;
 
@@ -186,7 +189,7 @@ function buildMealCards(mealData){
                                     </svg>
                                 <p class="dish__data__area">${strArea}</p>
                             </li>`;
-    
+
     dish.appendChild(dishData);
     dish.appendChild(dishImg);
     dishes.appendChild(dish);
@@ -195,18 +198,18 @@ function buildMealCards(mealData){
     hoverFunctionInCards();
 }
 
-function searchMealByID(dishCard){
+function searchMealByID(dishCard) {
     showDish(true);
     const dishId = dishCard.getAttribute('id');
     getMealByID(dishId);
 }
 
-function showSpinner(value){
+function showSpinner(value) {
     const spinner = document.querySelector('#spinner');
     (value) ? spinner.style.display = 'flex' : spinner.style.display = 'none';
 }
 
-function showAlert(message, type){
+function showAlert(message, type) {
     const divMensaje = document.createElement('div');
     divMensaje.classList.add('text-center', 'alert');
 
@@ -219,7 +222,7 @@ function showAlert(message, type){
 
     // Insertar el HTML
     const alerts = document.querySelectorAll('.alert');
-    if(alerts.length === 0) form.insertBefore(divMensaje, btnSearchRecipe.nextSibling);
+    if (alerts.length === 0) form.insertBefore(divMensaje, btnSearchRecipe.nextSibling);
 
     // Quitar el HTML
     setTimeout(() => {
@@ -228,25 +231,25 @@ function showAlert(message, type){
 }
 
 
-function cleanMealsHTML(){
-    document.querySelectorAll('.searchResultH2').forEach( searchResultH2 => {
+function cleanMealsHTML() {
+    document.querySelectorAll('.searchResultH2').forEach(searchResultH2 => {
         searchResultH2.remove();
     });
 
-    while(dishes.firstChild){
+    while (dishes.firstChild) {
         dishes.removeChild(dishes.firstChild);
     }
 }
 
-function cleanMealHTML(){
+function cleanMealHTML() {
     const dataMealHtml = document.querySelector('.dish-selected-data');
-    while(dataMealHtml.children.firstChild){
+    while (dataMealHtml.children.firstChild) {
         dataMealHtml.removeChild(dataMealHtml.firstChild);
     }
     dataMealHtml.remove();
 }
 
-function buildMealBigCard(meal){
+function buildMealBigCard(meal) {
     const dish = document.createElement('div');
     dish.classList.add('dish-selected-data');
 
@@ -296,13 +299,13 @@ function buildMealBigCard(meal){
 
     const ingredientsAndMeasure = getIngredientsAndMasures(meal);
 
-    ingredientsAndMeasure.forEach( (ingredientAndMeasure) => {
+    ingredientsAndMeasure.forEach((ingredientAndMeasure) => {
         const dishIngredient = document.createElement('li');
         dishIngredient.classList.add('indredients-list-item');
         dishIngredient.textContent = `${ingredientAndMeasure[0]} - ${ingredientAndMeasure[1]}`;
         dishIngredientsUl.appendChild(dishIngredient);
     });
-    
+
     dishIngredients.appendChild(dishIngredientsUl);
 
     dish.appendChild(dishName);
@@ -314,7 +317,7 @@ function buildMealBigCard(meal){
     dishSelected.appendChild(dish);
 }
 
-function getIngredientsAndMasures(meal){
+function getIngredientsAndMasures(meal) {
     const ingredientPrefix = 'strIngredient';
     const measurePrefix = 'strMeasure';
 
@@ -326,12 +329,12 @@ function getIngredientsAndMasures(meal){
     ingredientsAndMeasure.push([ingredient, measure]);
 
     getIngredients:
-    while(ingredient.length > 0){
+    while (ingredient.length > 0) {
         i++;
         ingredient = `${meal[`${ingredientPrefix}${i}`]}`;
         measure = `${meal[`${measurePrefix}${i}`]}`;
 
-        if(ingredient.length === 0 || ingredient === 'undefined' || ingredient === 'null') break getIngredients;
+        if (ingredient.length === 0 || ingredient === 'undefined' || ingredient === 'null') break getIngredients;
 
         ingredientsAndMeasure.push([ingredient, measure]);
     }
