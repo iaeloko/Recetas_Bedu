@@ -74,6 +74,20 @@ header{
     height: fit-content;
 }
 
+#logo{
+    width: auto;
+    height: auto;   
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: center;
+   
+
+
+}
+
 .icon-location{
     width: 23px;
     height: fit-content;
