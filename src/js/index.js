@@ -1,4 +1,8 @@
 import '../css/styles.css';
+import logo from '../assets/recetapp.jpeg'
+
+const imageLogo = document.getElementById('logoapp')
+imageLogo.src = logo;
 
 // Variables y Selectores
 const btnSearchRecipe = document.getElementById('btnSearchRecipe'),
@@ -340,5 +344,8 @@ function getIngredientsAndMasures(meal) {
     }
 
     return ingredientsAndMeasure;
+    
 }
+
+
 
