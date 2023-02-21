@@ -38,7 +38,7 @@ function searchMeal(event) {
 
     const recipeName = txtRecipe.value; //Obtener término de búsqueda
 
-    if (!recipeName.length) { showAlert('No has introducido ningun nombre de receta a buscar.', 'error'); return; }
+    if (!recipeName.length) { showAlert('Write the name of an ingredient', 'error'); return; }
 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeName}`)
         .then(response => response.json())
@@ -78,7 +78,7 @@ function getMealData(data, random = false) {
     if (!meals) {
         setTimeout(() => {
             showSpinner(false);
-            showAlert('No hay resultados de busqueda.', 'error');
+            showAlert('Try again', 'error');
         }, 1000)
         return;
     }
@@ -91,8 +91,8 @@ function getMealData(data, random = false) {
 
         const dishSearchedText =
             (random)
-                ? `Resultados de busqueda aleatoria:`
-                : `Resultados de busqueda de: '${txtRecipe.value}'`;
+                ? `Search results:`
+                : `Search results of: '${txtRecipe.value}'`;
 
         dishSearched.textContent = dishSearchedText;
 
@@ -288,7 +288,7 @@ function buildMealBigCard(meal) {
     const dishInstructions = document.createElement('div');
     dishInstructions.classList.add('dish-selected-instructions');
     dishInstructions.innerHTML = `<div class="dish-selected-instructions">
-                                    <h3>Instrucciones</h3>
+                                    <h3>Instructions</h3>
                                     <p>${meal.strInstructions}</p>
                                 </div>`;
 
@@ -297,7 +297,7 @@ function buildMealBigCard(meal) {
     const dishIngredientsUl = document.createElement('ul');
     dishIngredientsUl.classList.add('indredients-list');
     dishIngredients.classList.add('dish-selected-ingredients');
-    dishIngredientsTitle.textContent = 'Ingredientes';
+    dishIngredientsTitle.textContent = 'List of ingredients';
 
     dishIngredients.appendChild(dishIngredientsTitle);
 
