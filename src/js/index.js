@@ -15,6 +15,8 @@ const btnSearchRecipe = document.getElementById('btnSearchRecipe'),
     dishSelected = document.querySelector('.dish-selected'),
     btnCloseselectedDisd = document.querySelector('#btnCloseDishSelected'),
     body = document.querySelector('body');
+    txtRecipe.placeholder = "Write an ingredient for your recipe";
+
 
 
 init();
