@@ -317,8 +317,10 @@ function buildMealBigCard(meal) {
     dish.appendChild(dishName);
     dish.appendChild(dishImg);
     dish.appendChild(dishAreaCategory);
-    dish.appendChild(dishInstructions);
     dish.appendChild(dishIngredients);
+    dish.appendChild(dishInstructions);
+    
+    
 
     dishSelected.appendChild(dish);
 }
