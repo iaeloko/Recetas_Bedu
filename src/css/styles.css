@@ -20,6 +20,7 @@ html{
     font-family: var(--primaryFont);
 }
 
+
 body{
     font-size: 1.6rem;
     margin: 10px;
@@ -110,15 +111,16 @@ header{
 /* Section - Search */
 .search-content{
     margin-top: 37px;
-    width: 40%;
+    width: 55%;
     margin: 10px auto;
+    
 }
 
 h1{
     text-transform: uppercase;
     text-align: center;
     font-size: 2.4rem;
-    width: 240px;
+    width: auto;
     margin: 0 auto;
     color: var(--oragne);
     font-weight: bold;
@@ -526,6 +528,6 @@ footer:hover::-webkit-scrollbar-thumb {
     /* Section - Search */
     .search-content{
         margin-top: 37px;
-        width: 100%;
+        width: 90%;
     }
 }
