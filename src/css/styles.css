@@ -254,7 +254,7 @@ h1{
 }
 
 .dish:hover{
-    background-color: rgb(0, 0, 0);
+    background-color: #FE7A15;
     color: white;
 }
 
@@ -276,7 +276,7 @@ h1{
     color: #505050;
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .dish__data__list{
@@ -381,7 +381,7 @@ h1{
     background-color: var(--white);
     height: 670px;
     width: 430px;
-    border-radius: 10px;
+    border-radius: 15px;
     display: grid;
     place-content: center;
 }
@@ -423,6 +423,7 @@ h1{
     place-items: center;
     align-items: center;
     overflow-y: scroll;
+    margin: 20px;
 }
 
 .dish-selected-data h2{
